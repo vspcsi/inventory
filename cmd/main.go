@@ -1,10 +1,10 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/vspcsi/inventory/internal"
 	"github.com/vspcsi/inventory/internal/caches"
 	"github.com/vspcsi/inventory/internal/providers"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"strings"
@@ -12,8 +12,9 @@ import (
 
 func main() {
 	cache := caches.NewLocal([]internal.Provider{
-		providers.NewLinode(),
+		//providers.NewLinode(),
 		providers.NewLocal(),
+		providers.NewHetzner(),
 	})
 
 	router := gin.Default()
